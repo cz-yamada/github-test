@@ -1,0 +1,75 @@
+name: タスク
+description: 部署内の作業を起票する
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        作業の内容を、他のメンバーが読んで分かるように記入してください。
+        担当者は、起票後に右側の Assignees で設定します。
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 作業概要
+      description: 何をするかを簡潔に書いてください。
+      placeholder: 例）検証環境の EC2 を Windows Server 2025 に入れ替える
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 作業理由
+      description: なぜこの作業が必要かを書いてください（背景、課題、依頼元など）。
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 作業手順
+      description: 実施する手順をチェックリストで書いてください。分からない部分は「要確認」と書いて構いません。
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      description: どうなれば完了とするかを書いてください。
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 優先度
+      options:
+        - 高（今すぐ対応）
+        - 中（通常）
+        - 低（余裕があるとき）
+      default: 1
+    validations:
+      required: false
+
+  - type: input
+    id: due
+    attributes:
+      label: 期限
+      description: 期限がある場合のみ。例）2026-12-15
+    validations:
+      required: false
+
+  - type: textarea
+    id: links
+    attributes:
+      label: 関連リンク
+      description: 関連する Issue、PR、ドキュメントなど。
+    validations:
+      required: false
